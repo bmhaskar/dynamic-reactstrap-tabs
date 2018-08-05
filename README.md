@@ -6,7 +6,7 @@ For example you have a list of items displayed in tab and you click on one item.
 
 # Features
 
-- Includes reusable [Multitabs][mt] component. Provides simpler API to create tab based screens. There are simple functions like -
+- Includes reusable [MultiTabs][mt] component. Provides simpler API to create tab based screens. There are simple functions like -
 
   - [addTab][at] to add a new tab. [Example][at-ex]
   - [close][ct] to close any tab. [Example][ct-ex]
@@ -20,6 +20,11 @@ For example you have a list of items displayed in tab and you click on one item.
 
 - Automatically open newly added tab
 - Ability to select which active tab
+
+# Upcoming items
+
+- [ ] Lazy loading of tab content
+- [ ] Option to eager load tab content
 
 [mt]: https://github.com/bmhaskar/dynamic-reactstrap-tabs/blob/master/src/components/MutiTabs.js
 [at]: https://github.com/bmhaskar/dynamic-reactstrap-tabs/blob/master/src/components/MutiTabs.js#L46
