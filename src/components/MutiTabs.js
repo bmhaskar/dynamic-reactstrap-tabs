@@ -41,14 +41,14 @@ const navItem = ({ children, tabId, close, toggle, activeTabId, ...props }) => {
 };
 class MultiTabs extends React.Component {
   static defaultProps = { openTabImmediately: false, defaultActiveTab: 1};
-  state = { currentTab: 0, tabs: [], activeTab: this.props.defaultActiveTab };
+  state = { currentTabCount: 0, tabs: [], activeTab: this.props.defaultActiveTab };
   static NavItem = navItem;
   addTab = (tabTitle, tabContent) => {
     this.setState(state => {
-      const { tabs, currentTab, activeTab } = state;
+      const { tabs, currentTabCount, activeTab } = state;
       const wrappedTitle = <MultiTabs.NavItem>{tabTitle}</MultiTabs.NavItem>;
 
-      const tabId = currentTab + 1;
+      const tabId = currentTabCount + 1;
 
       const newActiveTab = this.props.openTabImmediately
         ? tabId
@@ -56,7 +56,7 @@ class MultiTabs extends React.Component {
           
       return {
         tabs: [...tabs, { tabTitle: wrappedTitle, tabContent, tabId }],
-        currentTab: tabId,
+        currentTabCount: tabId,
         activeTab: newActiveTab
       };
     });
@@ -115,7 +115,7 @@ class MultiTabs extends React.Component {
         <MultiTabContext.Provider
           value={{
             activeTabId: this.state.activeTab,
-            currentTab: this.state.currentTab,
+            currentTabCount: this.state.currentTabCount,
             addTab: this.addTab,
             toggle: this.toggle,
             close: this.close

@@ -8,20 +8,20 @@ import "./styles.css";
 
 const Tab = ({ count }) => (
   <MultiTabContext.Consumer>
-    {({ activeTabId, currentTab, addTab, toggle, close }) => {
+    {({ activeTabId, currentTabCount, addTab, close }) => {
       return (
         <div className="border-right border-left border-bottom p-3">
           <h2>Tab {count}</h2>
           <Button
             onClick={() => {
-              const nextTab = currentTab + 1;
+              const nextTab = currentTabCount + 1;
               addTab(`Tab ${nextTab}`, <Tab count={nextTab} />);
             }}
           >
             Add new tab
           </Button>
           <Button className="m-1" onClick={() => close(activeTabId)}>
-            Close this ({activeTabId}) tab
+            Close this tab
           </Button>
         </div>
       );
