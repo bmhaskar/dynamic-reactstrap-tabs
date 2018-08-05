@@ -40,8 +40,8 @@ const navItem = ({ children, tabId, close, toggle, activeTabId, ...props }) => {
   return <NavItem {...props}>{NavItemChild}</NavItem>;
 };
 class MultiTabs extends React.Component {
-  static defaultProps = { openTabImmediately: false, activeTab: 1 };
-  state = { activeTab: this.props.activeTab, currentTab: 0, tabs: [] };
+  static defaultProps = { openTabImmediately: false, defaultActiveTab: 1};
+  state = { currentTab: 0, tabs: [], activeTab: this.props.defaultActiveTab };
   static NavItem = navItem;
   addTab = (tabTitle, tabContent) => {
     this.setState(state => {
@@ -49,7 +49,11 @@ class MultiTabs extends React.Component {
       const wrappedTitle = <MultiTabs.NavItem>{tabTitle}</MultiTabs.NavItem>;
 
       const tabId = currentTab + 1;
-      const newActiveTab = this.props.openTabImmediately ? tabId : activeTab;
+
+      const newActiveTab = this.props.openTabImmediately
+        ? tabId
+        : activeTab;
+          
       return {
         tabs: [...tabs, { tabTitle: wrappedTitle, tabContent, tabId }],
         currentTab: tabId,
@@ -100,7 +104,7 @@ class MultiTabs extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ reRender: true });
+    this.setState({ activeTab: this.props.defaultActiveTab });
   }
 
   render() {

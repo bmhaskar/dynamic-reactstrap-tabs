@@ -29,36 +29,26 @@ const Tab = ({ count }) => (
   </MultiTabContext.Consumer>
 );
 function App() {
-  return (
-    <Container>
+  return <Container>
       <h3>Example of MultiTabs</h3>
       <Container className="m-3">
         <MultiTabs>
-          <MultiTabs.Tab
-            title={({ close, activeTabId, tabId }) => (
-              <NavLink
-                onClick={() => console.log(`Selected tab: ${tabId}`)}
-                className={classnames({ active: activeTabId === tabId })}
-              >
+          <MultiTabs.Tab title={({ close, activeTabId, tabId }) => <NavLink onClick={() => console.log(`Selected tab: ${tabId}`)} className={classnames(
+                  { active: activeTabId === tabId }
+                )}>
                 <div className="d-flex align-content-center flex-wrap">
                   <div className="m-1"> Tab 1</div>
                   <div className="p-0">
-                    <Button
-                      size="sm"
-                      color="link"
-                      onClick={event => {
+                    <Button size="sm" color="link" onClick={event => {
                         event.stopPropagation();
                         console.log("Custom close clicked");
                         close(tabId);
-                      }}
-                    >
+                      }}>
                       X
                     </Button>
                   </div>
                 </div>
-              </NavLink>
-            )}
-          >
+              </NavLink>}>
             <Tab count={1} />
           </MultiTabs.Tab>
           <MultiTabs.Tab title="Tab 2">
@@ -74,32 +64,23 @@ function App() {
       </Container>
       <h3>Example of MultiTabs with Auto Open newly added tab</h3>
       <Container className="m-3 ">
-        <MultiTabs openTabImmediately>
-          <MultiTabs.Tab
-            title={({ close, activeTabId, tabId }) => (
-              <NavLink
-                onClick={() => console.log(`Selected tab: ${tabId}`)}
-                className={classnames({ active: activeTabId === tabId })}
-              >
+      <MultiTabs openTabImmediately defaultActiveTab={2}>
+          <MultiTabs.Tab title={({ close, activeTabId, tabId }) => <NavLink onClick={() => console.log(`Selected tab: ${tabId}`)} className={classnames(
+                  { active: activeTabId === tabId }
+                )}>
                 <div className="d-flex align-content-center flex-wrap">
                   <div className="m-1"> Tab 1</div>
                   <div className="p-0">
-                    <Button
-                      size="sm"
-                      color="link"
-                      onClick={event => {
+                    <Button size="sm" color="link" onClick={event => {
                         event.stopPropagation();
                         console.log("Custom close clicked");
                         close(tabId);
-                      }}
-                    >
+                      }}>
                       X
                     </Button>
                   </div>
                 </div>
-              </NavLink>
-            )}
-          >
+              </NavLink>}>
             <Tab count={1} />
           </MultiTabs.Tab>
           <MultiTabs.Tab title="Tab 2">
@@ -113,8 +94,7 @@ function App() {
           </MultiTabs.Tab>
         </MultiTabs>
       </Container>
-    </Container>
-  );
+    </Container>;
 }
 
 const rootElement = document.getElementById("root");

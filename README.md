@@ -14,7 +14,7 @@ For example you have a list of items displayed in tab and you click on one item.
   Also there are following options
 
   - [openTabImmediately][oti] to open newly added tab immediately. [Example][oti-ex]
-  - [activeTab][att] to set the default tab.
+  - [defaultActiveTab][att] to set the default tab.
 
 - You don't need to make any changes to the tab content components. You could get access to the API via consumer.[Example][con]
 
